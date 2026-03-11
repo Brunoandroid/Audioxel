@@ -12,7 +12,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.audioxel.components.BottomNavBar
 import com.example.audioxel.components.AudioxelAppBar
-import com.example.audioxel.navigation.NavGraph
+import com.example.audioxel.navigation.SetupNavGraph
 import com.example.audioxel.ui.theme.Background
 
 @Composable
@@ -44,7 +44,7 @@ fun MainScreen() {
         },
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            NavGraph(navController = navController)
+            SetupNavGraph(navController = navController)
         }
     }
 }

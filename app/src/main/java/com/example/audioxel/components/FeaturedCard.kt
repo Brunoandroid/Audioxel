@@ -1,6 +1,7 @@
 package com.example.audioxel.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -32,11 +33,13 @@ import com.example.audioxel.ui.theme.Primary
 fun FeaturedCard(
     item: FeaturedItem,
     modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
 ) {
     Card(
         modifier = modifier
             .width(Dimens.SizeXXXLarge)
-            .height(Dimens.SizeXXXLarge),
+            .height(Dimens.SizeXXXLarge)
+            .clickable { onClick() },
         shape = RoundedCornerShape(Dimens.RadiusMedium),
         colors = CardDefaults.cardColors(containerColor = Color(0xFF1E1E1E)),
     ) {

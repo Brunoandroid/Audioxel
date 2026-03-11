@@ -13,7 +13,7 @@ import androidx.navigation.compose.composable
 import com.example.audioxel.screens.home.HomeScreen
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun SetupNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route
