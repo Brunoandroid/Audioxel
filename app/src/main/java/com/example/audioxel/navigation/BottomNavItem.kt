@@ -18,28 +18,28 @@ sealed class BottomNavItem(
     val unselectedIcon: ImageVector,
 ) {
     data object Home : BottomNavItem(
-        route = "home",
+        route = Screen.Home.route,
         labelRes = R.string.nav_home,
         selectedIcon = Icons.Filled.Home,
         unselectedIcon = Icons.Outlined.Home,
     )
 
     data object Explore : BottomNavItem(
-        route = "explore",
+        route = Screen.Explore.route,
         labelRes = R.string.nav_explore,
         selectedIcon = Icons.Filled.Search,
         unselectedIcon = Icons.Outlined.Search,
     )
 
     data object Library : BottomNavItem(
-        route = "library",
+        route = Screen.Library.route,
         labelRes = R.string.nav_library,
         selectedIcon = Icons.AutoMirrored.Filled.List,
         unselectedIcon = Icons.AutoMirrored.Filled.List,
     )
 
     data object Profile : BottomNavItem(
-        route = "profile",
+        route = Screen.Profile.route,
         labelRes = R.string.nav_profile,
         selectedIcon = Icons.Filled.Person,
         unselectedIcon = Icons.Outlined.Person,

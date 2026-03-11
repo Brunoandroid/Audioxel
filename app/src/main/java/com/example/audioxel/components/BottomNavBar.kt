@@ -1,12 +1,14 @@
 package com.example.audioxel.components
 
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.example.audioxel.navigation.BottomNavItem
 import com.example.audioxel.ui.theme.Background
@@ -29,7 +31,7 @@ fun BottomNavBar(
 
     NavigationBar(
         modifier = modifier,
-        containerColor = Surface,
+        containerColor = Background,
     ) {
         items.forEach { item ->
             val selected = currentRoute == item.route
@@ -43,14 +45,17 @@ fun BottomNavBar(
                     )
                 },
                 label = {
-                    Text(text = stringResource(item.labelRes))
+                    Text(
+                        text = stringResource(item.labelRes),
+                        style = MaterialTheme.typography.labelSmall
+                    )
                 },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Primary,
                     selectedTextColor = Primary,
                     unselectedIconColor = OnSurfaceVariant,
                     unselectedTextColor = OnSurfaceVariant,
-                    indicatorColor = Background,
+                    indicatorColor = Color.Transparent,
                 ),
             )
         }

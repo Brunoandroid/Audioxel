@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Audioxel</string>
-    <string name="greeting_text">Olá, Usuário</string>
+    <string name="greeting_text">AUDIOXEL</string>
     <string name="notifications">Notificações</string>
-    <string name="search_placeholder">O que você quer ouvir?</string>
+    <string name="search_placeholder">Artistas, músicas ou podcasts</string>
     <string name="section_recents">Recentes</string>
     <string name="section_playlists">Playlists</string>
+    <string name="section_destaques">Destaques</string>
+    <string name="section_escolhas_rapidas">Escolhas Rápidas</string>
     <string name="see_all">Ver tudo</string>
-    <string name="nav_home">Home</string>
-    <string name="nav_explore">Explorar</string>
-    <string name="nav_library">Biblioteca</string>
-    <string name="nav_profile">Perfil</string>
+    <string name="nav_home">INÍCIO</string>
+    <string name="nav_explore">BUSCAR</string>
+    <string name="nav_library">BIBLIOTECA</string>
+    <string name="nav_profile">PERFIL</string>
+    <string name="destaque_momento">DESTAQUE DO MOMENTO</string>
 </resources>

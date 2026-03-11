@@ -14,3 +14,17 @@ data class PlaylistItem(
     val name: String,
     @DrawableRes val imageRes: Int? = null,
 )
+
+data class FeaturedItem(
+    val id: Int,
+    val title: String,
+    val subtitle: String,
+    val label: String,
+    @DrawableRes val imageRes: Int? = null,
+)
+
+data class QuickChoiceItem(
+    val id: Int,
+    val title: String,
+    @DrawableRes val imageRes: Int? = null,
+)
