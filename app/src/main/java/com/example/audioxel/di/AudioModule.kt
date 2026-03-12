@@ -13,7 +13,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AudioModule {
-
     @Provides
     @Singleton
     fun provideAudioPlayer(@ApplicationContext context: Context): AudioPlayer {

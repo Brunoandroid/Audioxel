@@ -26,8 +26,6 @@ fun MainScreen(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    // Temporário para teste de áudio, no futuro usar um SharedViewModel
-    // Para simplificar, vamos apenas simular o estado aqui por enquanto
     var isPlaying by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -49,7 +47,7 @@ fun MainScreen(
                     artistName = "SoundCloud Artist",
                     isPlaying = isPlaying,
                     onPlayPauseClick = { isPlaying = !isPlaying },
-                    onNextClick = { /* Próxima */ }
+                    onNextClick = { }
                 )
                 BottomNavBar(
                     currentRoute = currentDestination?.route ?: "",

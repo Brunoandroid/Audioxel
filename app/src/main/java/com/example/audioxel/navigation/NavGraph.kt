@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.audioxel.screens.explore.ExploreScreen
 import com.example.audioxel.screens.home.HomeScreen
 
 @Composable
@@ -22,7 +23,7 @@ fun SetupNavGraph(navController: NavHostController) {
             HomeScreen()
         }
         composable(Screen.Explore.route) {
-            PlaceholderScreen("Explore")
+            ExploreScreen()
         }
         composable(BottomNavItem.Library.route) {
             PlaceholderScreen("Library")

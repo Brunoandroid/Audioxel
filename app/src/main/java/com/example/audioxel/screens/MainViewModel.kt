@@ -3,7 +3,7 @@ package com.example.audioxel.screens
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.audioxel.BuildConfig
-import com.example.audioxel.data.repository.soundcloud.SoundCloudRepository
+import com.example.audioxel.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +20,7 @@ data class MainUiState(
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val soundCloudRepository: SoundCloudRepository
+    private val audioRepository: Repository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.update { it.copy(isAuthenticating = true, authError = null) }
             
-            val result = soundCloudRepository.fetchAccessToken(
+            val result = audioRepository.fetchAccessToken(
                 clientId = BuildConfig.SOUNDCLOUD_CLIENT_ID,
                 clientSecret = BuildConfig.SOUNDCLOUD_CLIENT_SECRET
             )

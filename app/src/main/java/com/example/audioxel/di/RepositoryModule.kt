@@ -1,9 +1,9 @@
 package com.example.audioxel.di
 
-import com.example.audioxel.data.repository.HomeRepository
-import com.example.audioxel.data.repository.HomeRepositoryImpl
-import com.example.audioxel.data.repository.soundcloud.SoundCloudRepository
-import com.example.audioxel.data.repository.soundcloud.SoundCloudRepositoryImpl
+import com.example.audioxel.data.repository.Repository
+import com.example.audioxel.data.repository.RepositoryImpl
+import com.example.audioxel.data.security.ISecureTokenStore
+import com.example.audioxel.data.security.SecureTokenStore
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,13 +15,13 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindHomeRepository(
-        homeRepositoryImpl: HomeRepositoryImpl
-    ): HomeRepository
+    abstract fun bindAudioRepository(
+        audioRepositoryImpl: RepositoryImpl
+    ): Repository
 
     @Binds
     @Singleton
-    abstract fun bindSoundCloudRepository(
-        soundCloudRepositoryImpl: SoundCloudRepositoryImpl
-    ): SoundCloudRepository
+    abstract fun bindSecureTokenStore(
+        secureTokenStore: SecureTokenStore
+    ): ISecureTokenStore
 }

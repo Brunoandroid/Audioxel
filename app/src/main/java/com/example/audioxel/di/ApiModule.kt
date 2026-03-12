@@ -1,6 +1,9 @@
 package com.example.audioxel.di
 
-import com.example.audioxel.data.remote.soundcloud.SoundCloudApi
+import com.example.audioxel.data.remote.ApiEndpoints
+import com.example.audioxel.data.remote.ApiService
+import com.example.audioxel.data.security.ISecureTokenStore
+import com.example.audioxel.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +17,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
-
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
@@ -25,20 +27,34 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        tokenStore: ISecureTokenStore
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor { chain ->
+                val original = chain.request()
+                val requestBuilder = original.newBuilder()
+                tokenStore.getAccessToken()?.let { token ->
+                    if (!original.url.encodedPath.contains(ApiEndpoints.OAUTH_TOKEN)) {
+                        requestBuilder.header("Authorization", "OAuth $token")
+                    }
+                }
+
+                chain.proceed(requestBuilder.build())
+            }
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideSoundCloudApi(okHttpClient: OkHttpClient): SoundCloudApi {
+    fun provideSoundCloudApi(okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl(SoundCloudApi.BASE_URL)
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(SoundCloudApi::class.java)
+            .create(ApiService::class.java)
     }
 }

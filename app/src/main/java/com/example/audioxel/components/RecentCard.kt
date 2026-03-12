@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
-import com.example.audioxel.data.model.RecentItem
+import com.example.audioxel.data.model.home.RecentItem
 import com.example.audioxel.ui.theme.Dimens
 import com.example.audioxel.ui.theme.OnBackground
 import com.example.audioxel.ui.theme.OnSurfaceVariant

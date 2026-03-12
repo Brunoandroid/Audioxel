@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import com.example.audioxel.data.model.PlaylistItem
+import com.example.audioxel.data.model.home.PlaylistItem
 import com.example.audioxel.ui.theme.Dimens
 import com.example.audioxel.ui.theme.OnBackground
 import com.example.audioxel.ui.theme.SurfaceVariant

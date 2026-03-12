@@ -7,7 +7,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.audioxel.R
 import com.example.audioxel.components.QuickChoiceCard
 import com.example.audioxel.components.SectionHeader
-import com.example.audioxel.data.model.QuickChoiceItem
+import com.example.audioxel.data.model.home.QuickChoiceItem
 import com.example.audioxel.ui.theme.Dimens
 
 @Composable

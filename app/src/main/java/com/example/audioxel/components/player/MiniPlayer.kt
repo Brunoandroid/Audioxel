@@ -39,11 +39,10 @@ fun MiniPlayer(
             .fillMaxWidth()
             .height(64.dp)
             .background(Surface)
-            .clickable { /* Abrir Player Full Screen no futuro */ }
+            .clickable { }
             .padding(horizontal = Dimens.PaddingMedium),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Placeholder para imagem da capa
         Box(
             modifier = Modifier
                 .size(48.dp)

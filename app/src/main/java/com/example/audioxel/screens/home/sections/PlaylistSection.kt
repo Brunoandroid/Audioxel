@@ -11,7 +11,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.audioxel.R
 import com.example.audioxel.components.PlaylistCard
 import com.example.audioxel.components.SectionHeader
-import com.example.audioxel.data.model.PlaylistItem
+import com.example.audioxel.data.model.home.PlaylistItem
 import com.example.audioxel.ui.theme.Dimens
 
 @Composable
