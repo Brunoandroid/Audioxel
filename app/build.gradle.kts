@@ -18,6 +18,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // SoundCloud Credentials from gradle.properties
+        buildConfigField("String", "SOUNDCLOUD_CLIENT_ID", project.findProperty("SOUNDCLOUD_CLIENT_ID") as? String ?: "\"\"")
+        buildConfigField("String", "SOUNDCLOUD_CLIENT_SECRET", project.findProperty("SOUNDCLOUD_CLIENT_SECRET") as? String ?: "\"\"")
     }
 
     buildTypes {
@@ -35,6 +39,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -61,6 +66,10 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.gson)
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.session)
+    implementation(libs.media3.common)
+    implementation(libs.media3.ui)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
