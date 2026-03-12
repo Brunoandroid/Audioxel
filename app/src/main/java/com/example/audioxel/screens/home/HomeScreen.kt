@@ -11,8 +11,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.audioxel.R
 import com.example.audioxel.components.SearchBar
+import com.example.audioxel.data.model.soundcloud.SoundCloudUser
 import com.example.audioxel.screens.explore.UserItem
 import com.example.audioxel.screens.home.sections.FeaturedSection
 import com.example.audioxel.screens.home.sections.PlaylistSection
@@ -23,6 +26,7 @@ import com.example.audioxel.ui.theme.OnSurfaceVariant
 
 @Composable
 fun HomeScreen(
+    onUserClick: (SoundCloudUser) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -60,14 +64,17 @@ fun HomeScreen(
             } else if (uiState.searchResults.isEmpty()) {
                 item {
                     Text(
-                        text = "Nenhum resultado encontrado para \"${uiState.searchQuery}\"",
+                        text = stringResource(R.string.error_no_results_for_query, uiState.searchQuery),
                         color = OnSurfaceVariant,
                         modifier = Modifier.padding(Dimens.PaddingDefault)
                     )
                 }
             } else {
                 items(uiState.searchResults) { user ->
-                    UserItem(user = user)
+                    UserItem(
+                        user = user,
+                        onClick = { onUserClick(user) }
+                    )
                 }
             }
         } else {

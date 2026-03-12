@@ -5,6 +5,7 @@ import com.example.audioxel.data.model.home.PlaylistItem
 import com.example.audioxel.data.model.home.QuickChoiceItem
 import com.example.audioxel.data.model.home.RecentItem
 import com.example.audioxel.data.model.soundcloud.SoundCloudTokenResponse
+import com.example.audioxel.data.model.soundcloud.SoundCloudTrack
 import com.example.audioxel.data.model.soundcloud.SoundCloudUser
 import com.example.audioxel.data.remote.ApiService
 import com.example.audioxel.data.security.ISecureTokenStore
@@ -81,12 +82,32 @@ class RepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
-                    Result.success(body)
+                    val sortedList = body.sortedByDescending { it.playlistCount }
+                    Result.success(sortedList)
                 } else {
                     Result.failure(Exception("Response body is null"))
                 }
             } else {
                 Result.failure(Exception("Error searching artists: ${response.code()} ${response.message()}"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getUserTracks(userId: Long): Result<List<SoundCloudTrack>> {
+        if (tokenStore.getAccessToken() == null) return Result.failure(Exception("No access token available"))
+        return try {
+            val response = api.getUserTracks(userId = userId)
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) {
+                    Result.success(body)
+                } else {
+                    Result.failure(Exception("Response body is null"))
+                }
+            } else {
+                Result.failure(Exception("Error fetching user tracks: ${response.code()} ${response.message()}"))
             }
         } catch (e: Exception) {
             Result.failure(e)

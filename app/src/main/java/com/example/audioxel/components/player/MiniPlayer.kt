@@ -17,9 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.audioxel.R
 import com.example.audioxel.ui.theme.Dimens
 import com.example.audioxel.ui.theme.OnSurface
 import com.example.audioxel.ui.theme.OnSurfaceVariant
@@ -75,7 +77,7 @@ fun MiniPlayer(
         IconButton(onClick = onPlayPauseClick) {
             Icon(
                 imageVector = if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
-                contentDescription = if (isPlaying) "Pause" else "Play",
+                contentDescription = if (isPlaying) stringResource(R.string.content_description_pause) else stringResource(R.string.content_description_play),
                 tint = OnSurface
             )
         }
@@ -83,7 +85,7 @@ fun MiniPlayer(
         IconButton(onClick = onNextClick) {
             Icon(
                 imageVector = Icons.Default.SkipNext,
-                contentDescription = "Next",
+                contentDescription = stringResource(R.string.content_description_next),
                 tint = OnSurface
             )
         }

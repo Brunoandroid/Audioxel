@@ -5,6 +5,7 @@ import com.example.audioxel.data.model.home.PlaylistItem
 import com.example.audioxel.data.model.home.QuickChoiceItem
 import com.example.audioxel.data.model.home.RecentItem
 import com.example.audioxel.data.model.soundcloud.SoundCloudTokenResponse
+import com.example.audioxel.data.model.soundcloud.SoundCloudTrack
 import com.example.audioxel.data.model.soundcloud.SoundCloudUser
 import kotlinx.coroutines.flow.Flow
 
@@ -16,4 +17,5 @@ interface Repository {
 
     suspend fun fetchAccessToken(clientId: String, clientSecret: String): Result<SoundCloudTokenResponse>
     suspend fun searchArtists(query: String): Result<List<SoundCloudUser>>
+    suspend fun getUserTracks(userId: Long): Result<List<SoundCloudTrack>>
 }

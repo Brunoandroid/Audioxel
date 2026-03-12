@@ -1,6 +1,7 @@
 package com.example.audioxel.screens.explore
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,9 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.example.audioxel.R
 import com.example.audioxel.components.SearchBar
 import com.example.audioxel.data.model.soundcloud.SoundCloudUser
 import com.example.audioxel.ui.theme.Dimens
@@ -25,6 +28,7 @@ import com.example.audioxel.ui.theme.OnSurfaceVariant
 
 @Composable
 fun ExploreScreen(
+    onUserClick: (SoundCloudUser) -> Unit,
     viewModel: ExploreViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -57,7 +61,7 @@ fun ExploreScreen(
                 )
             } else if (uiState.results.isEmpty() && uiState.searchQuery.isNotBlank()) {
                 Text(
-                    text = "Nenhum resultado encontrado",
+                    text = stringResource(R.string.error_no_results),
                     color = OnSurfaceVariant,
                     modifier = Modifier.align(Alignment.Center)
                 )
@@ -67,7 +71,10 @@ fun ExploreScreen(
                     contentPadding = PaddingValues(bottom = Dimens.PaddingDefault)
                 ) {
                     items(uiState.results) { user ->
-                        UserItem(user = user)
+                        UserItem(
+                            user = user,
+                            onClick = { onUserClick(user) }
+                        )
                     }
                 }
             }
@@ -76,10 +83,14 @@ fun ExploreScreen(
 }
 
 @Composable
-fun UserItem(user: SoundCloudUser) {
+fun UserItem(
+    user: SoundCloudUser,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onClick() }
             .padding(vertical = Dimens.PaddingXSmall),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -103,7 +114,7 @@ fun UserItem(user: SoundCloudUser) {
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "${user.followersCount} seguidores",
+                text = stringResource(R.string.followers_count, user.followersCount),
                 style = MaterialTheme.typography.bodySmall,
                 color = OnSurfaceVariant
             )

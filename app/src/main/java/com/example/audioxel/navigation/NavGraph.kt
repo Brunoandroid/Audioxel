@@ -8,10 +8,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.audioxel.screens.explore.ExploreScreen
 import com.example.audioxel.screens.home.HomeScreen
+import com.example.audioxel.screens.musics.MusicsScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
@@ -20,10 +23,20 @@ fun SetupNavGraph(navController: NavHostController) {
         startDestination = Screen.Home.route
     ) {
         composable(Screen.Home.route) {
-            HomeScreen()
+            HomeScreen(onUserClick = { user ->
+                navController.navigate(Screen.Musics.createRoute(user.id))
+            })
         }
         composable(Screen.Explore.route) {
-            ExploreScreen()
+            ExploreScreen(onUserClick = { user ->
+                navController.navigate(Screen.Musics.createRoute(user.id))
+            })
+        }
+        composable(
+            route = Screen.Musics.route,
+            arguments = listOf(navArgument("userId") { type = NavType.LongType })
+        ) {
+            MusicsScreen()
         }
         composable(BottomNavItem.Library.route) {
             PlaceholderScreen("Library")

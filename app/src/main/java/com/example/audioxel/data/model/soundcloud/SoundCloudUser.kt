@@ -20,5 +20,6 @@ data class SoundCloudUser(
     @SerializedName("track_count") val trackCount: Int,
     @SerializedName("followers_count") val followersCount: Int,
     @SerializedName("followings_count") val followingsCount: Int,
-    @SerializedName("public_favorites_count") val publicFavoritesCount: Int
+    @SerializedName("public_favorites_count") val publicFavoritesCount: Int,
+    @SerializedName("playlist_count") val playlistCount: Int
 )

@@ -1,12 +1,14 @@
 package com.example.audioxel.data.remote
 
 import com.example.audioxel.data.model.soundcloud.SoundCloudTokenResponse
+import com.example.audioxel.data.model.soundcloud.SoundCloudTrack
 import com.example.audioxel.data.model.soundcloud.SoundCloudUser
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -22,4 +24,9 @@ interface ApiService {
     suspend fun searchUsers(
         @Query("q") query: String
     ): Response<List<SoundCloudUser>>
+
+    @GET(ApiEndpoints.USER_TRACKS)
+    suspend fun getUserTracks(
+        @Path("id") userId: Long
+    ): Response<List<SoundCloudTrack>>
 }

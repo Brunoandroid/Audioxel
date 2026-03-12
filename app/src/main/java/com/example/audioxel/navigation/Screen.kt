@@ -5,4 +5,7 @@ sealed class Screen(val route: String) {
     data object Explore : Screen(route = Routes.EXPLORE)
     data object Library : Screen(route = Routes.LIBRARY)
     data object Profile : Screen(route = Routes.PROFILE)
+    data object Musics : Screen(route = Routes.MUSICS) {
+        fun createRoute(userId: Long) = "musics_screen/$userId"
+    }
 }
