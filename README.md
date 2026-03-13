@@ -4,6 +4,20 @@ Audioxel é um reprodutor de música moderno para Android, desenvolvido com as t
 
 > **Nota sobre o desenvolvimento:** Este projeto está sendo preparado para comercialização em breve. Devido a isso, algumas funcionalidades avançadas ou específicas podem não estar disponíveis publicamente neste repositório no momento.
 
+## Layout mobile
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/audioxel_home.gif" width="250" height="500"/></td>
+      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/audioxel_details.gif" width="250" height="500"/></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Home</b></td>
+      <td align="center"><b>Lista de Músicas</b></td>
+    </tr>
+  </table>
+</div>
+
 ## ✨ Características
 
 - **Exploração de Músicas:** Busque por usuários e descubra suas faixas.
