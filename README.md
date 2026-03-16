@@ -9,7 +9,7 @@ Audioxel é um reprodutor de música moderno para Android, desenvolvido com as t
   <table>
     <tr>
       <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/audioxel_home.gif" width="250" height="500"/></td>
-      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/audioxel_details.gif" width="250" height="500"/></td>
+      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/audioxel_details_full.gif" width="250" height="500"/></td>
     </tr>
     <tr>
       <td align="center"><b>Home</b></td>
