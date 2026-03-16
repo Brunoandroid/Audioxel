@@ -2,6 +2,8 @@ package com.example.audioxel.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -26,8 +28,6 @@ fun MainScreen(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    var isPlaying by remember { mutableStateOf(false) }
-
     Scaffold(
         containerColor = Background,
         topBar = {
@@ -38,15 +38,18 @@ fun MainScreen(
         bottomBar = {
             Column {
                 if (uiState.authError != null) {
-                    androidx.compose.material3.Snackbar {
-                        androidx.compose.material3.Text(uiState.authError!!)
+                    Snackbar {
+                        Text(uiState.authError!!)
                     }
                 }
+                
+                val track = uiState.currentTrack
                 MiniPlayer(
-                    trackName = "SoundCloud Song",
-                    artistName = "SoundCloud Artist",
-                    isPlaying = isPlaying,
-                    onPlayPauseClick = { isPlaying = !isPlaying },
+                    trackName = track.title,
+                    artistName = track.user.username,
+                    artworkUrl = track.artworkUrl ?: track.user.avatarUrl,
+                    isPlaying = uiState.isPlaying,
+                    onPlayPauseClick = { viewModel.togglePlayPause() },
                     onNextClick = { }
                 )
                 BottomNavBar(

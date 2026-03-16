@@ -2,7 +2,6 @@ package com.example.audioxel.screens.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.audioxel.R
 import com.example.audioxel.components.SearchBar
+import com.example.audioxel.components.ArtistSection
 import com.example.audioxel.data.model.soundcloud.SoundCloudUser
-import com.example.audioxel.screens.explore.UserItem
 import com.example.audioxel.screens.home.sections.FeaturedSection
 import com.example.audioxel.screens.home.sections.PlaylistSection
 import com.example.audioxel.screens.home.sections.QuickChoicesSection
@@ -27,7 +26,7 @@ import com.example.audioxel.ui.theme.OnSurfaceVariant
 @Composable
 fun HomeScreen(
     onUserClick: (SoundCloudUser) -> Unit,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -70,10 +69,10 @@ fun HomeScreen(
                     )
                 }
             } else {
-                items(uiState.searchResults) { user ->
-                    UserItem(
-                        user = user,
-                        onClick = { onUserClick(user) }
+                item {
+                    ArtistSection(
+                        artists = uiState.searchResults,
+                        onArtistClick = { onUserClick(it) }
                     )
                 }
             }

@@ -1,10 +1,9 @@
 package com.example.audioxel.audio
 
-import androidx.media3.common.Player
+import com.example.audioxel.data.model.soundcloud.SoundCloudTrack
 
 interface AudioPlayer {
-    val player: Player
-    fun play(url: String)
+    fun play(track: SoundCloudTrack)
     fun pause()
     fun resume()
     fun stop()

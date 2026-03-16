@@ -17,10 +17,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.audioxel.R
 import com.example.audioxel.ui.theme.Dimens
 import com.example.audioxel.ui.theme.OnSurface
@@ -31,6 +33,7 @@ import com.example.audioxel.ui.theme.Surface
 fun MiniPlayer(
     trackName: String,
     artistName: String,
+    artworkUrl: String?,
     isPlaying: Boolean,
     onPlayPauseClick: () -> Unit,
     onNextClick: () -> Unit,
@@ -45,11 +48,14 @@ fun MiniPlayer(
             .padding(horizontal = Dimens.PaddingMedium),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
+        AsyncImage(
+            model = artworkUrl,
+            contentDescription = null,
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(Dimens.RadiusSmall))
-                .background(Color.Gray)
+                .background(Color.Gray),
+            contentScale = ContentScale.Crop
         )
 
         Spacer(modifier = Modifier.width(Dimens.PaddingMedium))

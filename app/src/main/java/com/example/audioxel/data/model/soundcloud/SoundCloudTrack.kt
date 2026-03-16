@@ -12,6 +12,6 @@ data class SoundCloudTrack(
     @SerializedName("artwork_url") val artworkUrl: String?,
     @SerializedName("stream_url") val streamUrl: String?,
     @SerializedName("playback_count") val playbackCount: Int?,
-    @SerializedName("likes_count") val likes_count: Int?,
+    @SerializedName("likes_count") val likesCount: Int?,
     @SerializedName("user") val user: SoundCloudUser
 )

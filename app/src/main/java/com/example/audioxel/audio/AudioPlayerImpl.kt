@@ -1,41 +1,34 @@
 package com.example.audioxel.audio
 
-import android.content.Context
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.exoplayer.ExoPlayer
+import android.util.Log
+import com.example.audioxel.data.model.soundcloud.SoundCloudTrack
 import javax.inject.Inject
 
-class AudioPlayerImpl @Inject constructor(
-    context: Context
-) : AudioPlayer {
+class AudioPlayerImpl @Inject constructor() : AudioPlayer {
 
-    override val player: Player = ExoPlayer.Builder(context).build()
+    private val TAG = "AudioPlayerImpl"
 
-    override fun play(url: String) {
-        val mediaItem = MediaItem.fromUri(url)
-        player.setMediaItem(mediaItem)
-        player.prepare()
-        player.play()
+    override fun play(track: SoundCloudTrack) {
+        Log.d(TAG, "Playing track: ${track.title}")
     }
 
     override fun pause() {
-        player.pause()
+        Log.d(TAG, "Pausing playback")
     }
 
     override fun resume() {
-        player.play()
+        Log.d(TAG, "Resuming playback")
     }
 
     override fun stop() {
-        player.stop()
+        Log.d(TAG, "Stopping playback")
     }
 
     override fun seekTo(position: Long) {
-        player.seekTo(position)
+        Log.d(TAG, "Seeking to $position")
     }
 
     override fun release() {
-        player.release()
+        Log.d(TAG, "Releasing resources")
     }
 }

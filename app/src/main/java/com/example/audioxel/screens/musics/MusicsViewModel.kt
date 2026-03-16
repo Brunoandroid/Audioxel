@@ -3,8 +3,10 @@ package com.example.audioxel.screens.musics
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.audioxel.R
 import com.example.audioxel.data.model.soundcloud.SoundCloudTrack
 import com.example.audioxel.data.repository.Repository
+import com.example.audioxel.util.ResourceManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,6 +24,7 @@ data class MusicsUiState(
 @HiltViewModel
 class MusicsViewModel @Inject constructor(
     private val repository: Repository,
+    private val resourceManager: ResourceManager,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -34,7 +37,7 @@ class MusicsViewModel @Inject constructor(
         userId?.let {
             loadTracks(it)
         } ?: run {
-            _uiState.update { it.copy(error = "ID do usuário não encontrado") }
+            _uiState.update { it.copy(error = resourceManager.getString(R.string.error_user_id_not_found)) }
         }
     }
 

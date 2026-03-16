@@ -19,7 +19,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // SoundCloud Credentials from gradle.properties
         buildConfigField("String", "SOUNDCLOUD_CLIENT_ID", project.findProperty("SOUNDCLOUD_CLIENT_ID") as? String ?: "\"\"")
         buildConfigField("String", "SOUNDCLOUD_CLIENT_SECRET", project.findProperty("SOUNDCLOUD_CLIENT_SECRET") as? String ?: "\"\"")
     }
